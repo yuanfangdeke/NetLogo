@@ -1,25 +1,24 @@
 node {
   stage('Build') { // <2>
-    def workspace = pwd()
-    sh '${workspace}/sbt update'
-    sh '${workspace}/sbt all'
+    sh 'printenv'
+    sh "${env.WORKSPACE}@script/sbt update"
+    sh "${env.WORKSPACE}@script/sbt all"
   }
   stage('Test') {
-    def workspace = pwd()
-    sh '${workspace}/sbt depend'
-    sh '${workspace}/sbt headless/depend'
-    sh '${workspace}/sbt netlogo/test:fast'
-    sh '${workspace}/sbt parserJS/test'
-    sh '${workspace}/sbt nogen netlogo/test:fast'
-    sh '${workspace}/sbt threed netlogo/test:fast'
-    sh '${workspace}/sbt headless/test:fast'
-    sh '${workspace}/sbt netlogo/test:medium'
-    sh '${workspace}/sbt nogen netlogo/test:medium'
-    sh '${workspace}/sbt headless/test:medium'
-    sh '${workspace}/sbt nogen headless/test:medium'
-    sh '${workspace}/sbt netlogo/test:slow'
-    sh '${workspace}/sbt threed netlogo/test:slow'
-    sh '${workspace}/sbt netlogo/test:extensionTests'
+    sh "${env.WORKSPACE}@script/sbt depend"
+    sh "${env.WORKSPACE}@script/sbt headless/depend"
+    sh "${env.WORKSPACE}@script/sbt netlogo/test:fast"
+    sh "${env.WORKSPACE}@script/sbt parserJS/test"
+    sh "${env.WORKSPACE}@script/sbt nogen netlogo/test:fast"
+    sh "${env.WORKSPACE}@script/sbt threed netlogo/test:fast"
+    sh "${env.WORKSPACE}@script/sbt headless/test:fast"
+    sh "${env.WORKSPACE}@script/sbt netlogo/test:medium"
+    sh "${env.WORKSPACE}@script/sbt nogen netlogo/test:medium"
+    sh "${env.WORKSPACE}@script/sbt headless/test:medium"
+    sh "${env.WORKSPACE}@script/sbt nogen headless/test:medium"
+    sh "${env.WORKSPACE}@script/sbt netlogo/test:slow"
+    sh "${env.WORKSPACE}@script/sbt threed netlogo/test:slow"
+    sh "${env.WORKSPACE}@script/sbt netlogo/test:extensionTests"
     junit 'netlogo-gui/target/test-reports/*.xml'
   }
 }
