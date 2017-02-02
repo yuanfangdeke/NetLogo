@@ -70,7 +70,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
           SIPUSH 0
           ANEWARRAY java/lang/Object
           ICONST_3
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -89,7 +89,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
           DSTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           NEW org/nlogo/nvm/MutableLong
           DUP
@@ -115,7 +115,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
           SIPUSH 0
           ANEWARRAY java/lang/Object
           ICONST_5
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -129,7 +129,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
          L0
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
           CHECKCAST org/nlogo/nvm/MutableLong
@@ -628,7 +628,7 @@ procedure FIND-NEW-STATE:[A B S]{-TP-}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           ALOAD 2
           AASTORE
@@ -787,7 +787,7 @@ procedure FIND-NEW-STATE:[A B S]{-TP-}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_1
           ALOAD 2
           AASTORE
@@ -876,7 +876,7 @@ procedure FIND-NEW-STATE:[A B S]{-TP-}:
          L11
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L12
@@ -958,7 +958,7 @@ procedure FIND-NEW-STATE:[A B S]{-TP-}:
          L18
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_1
           AALOAD
          L19
@@ -1226,7 +1226,7 @@ procedure FIND-NEW-STATE:[A B S]{-TP-}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_2
           ALOAD 2
           AASTORE
@@ -1257,7 +1257,7 @@ procedure FIND-NEW-STATE:[A B S]{-TP-}:
          L11
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_2
           AALOAD
          L12
@@ -1283,7 +1283,7 @@ procedure FIND-NEW-STATE:[A B S]{-TP-}:
          FRAME SAME1 D
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L14
@@ -1309,7 +1309,7 @@ procedure FIND-NEW-STATE:[A B S]{-TP-}:
          FRAME FULL [org/nlogo/prim/_asm_procedurefindnewstate_setpatchvariable_11 org/nlogo/nvm/Context java/lang/Object] [D D]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_1
           AALOAD
          L16
@@ -1709,7 +1709,7 @@ procedure GO:[]{O---}:
           SIPUSH 3
           ANEWARRAY java/lang/Object
           ICONST_2
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;

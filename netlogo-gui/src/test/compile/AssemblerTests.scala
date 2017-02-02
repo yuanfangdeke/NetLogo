@@ -3,12 +3,12 @@
 package org.nlogo.compile
 
 import org.scalatest.FunSuite
-import org.nlogo.nvm.Procedure
+import org.nlogo.nvm.ProcedureInterface
 import org.nlogo.api.DummyExtensionManager
 import org.nlogo.core.Program
 
 class AssemblerTests extends FunSuite {
-  def compile(keyword: String, source: String): Procedure = {
+  def compile(keyword: String, source: String): ProcedureInterface = {
     val program = Program.empty()
     val procdefs = TestHelper.compiledProcedures(keyword + " foo " + source + "\nend", program)
     assertResult(1)(procdefs.size)

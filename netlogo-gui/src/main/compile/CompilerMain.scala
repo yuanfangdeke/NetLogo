@@ -11,7 +11,7 @@ import org.nlogo.api.{ ExtensionManager, Version }
 import org.nlogo.compile.api.{ Backifier => BackifierInterface, CommandMunger, DefaultAstVisitor,
   FrontMiddleBridgeInterface, MiddleEndInterface, Optimizations, ProcedureDefinition, ReporterMunger }
 import org.nlogo.core.{ Dialect, Program }
-import org.nlogo.nvm.{ CompilerFlags, GeneratorInterface, Procedure }
+import org.nlogo.nvm.{ CompilerFlags, GeneratorInterface, ProcedureInterface }
 import org.nlogo.core.{ CompilationEnvironment, CompilationOperand, FrontEndInterface, FrontEndProcedure, Femto }
 import scala.collection.immutable.ListMap
 import scala.collection.JavaConversions._
@@ -29,11 +29,16 @@ private object CompilerMain {
   private val frontEnd =
     Femto.scalaSingleton[FrontEndInterface]("org.nlogo.parse.FrontEnd")
 
-  def compile(sources: Map[String, String], displayName: Option[String], program: Program, subprogram: Boolean,
-              oldProcedures: ListMap[String, Procedure],
-              extensionManager: ExtensionManager, compilationEnv: CompilationEnvironment): (ListMap[String, Procedure], Program) = {
+  def compile(
+    sources:          Map[String, String],
+    displayName:      Option[String],
+    program:          Program,
+    subprogram:       Boolean,
+    oldProcedures:    ListMap[String, ProcedureInterface],
+    extensionManager: ExtensionManager,
+    compilationEnv:   CompilationEnvironment): (ListMap[String, ProcedureInterface], Program) = {
 
-    val oldProceduresListMap = ListMap[String, Procedure](oldProcedures.toSeq: _*)
+    val oldProceduresListMap = ListMap[String, ProcedureInterface](oldProcedures.toSeq: _*)
     val (topLevelDefs, feStructureResults) =
       frontEnd.frontEnd(CompilationOperand(sources, extensionManager, compilationEnv, program, oldProceduresListMap, subprogram, displayName))
 
@@ -59,7 +64,7 @@ private object CompilerMain {
 
   // These phases optimize and tweak the ProcedureDefinitions given by frontEnd/CompilerBridge. - RG 10/29/15
   // SimpleOfVisitor performs an optimization, but also sets up for SetVisitor - ST 2/21/08
-  def assembleProcedure(procdef: ProcedureDefinition, program: Program, compilationEnv: CompilationEnvironment): Procedure = {
+  def assembleProcedure(procdef: ProcedureDefinition, program: Program, compilationEnv: CompilationEnvironment): ProcedureInterface = {
     val optimizers: Seq[DefaultAstVisitor] = Seq(
       new ConstantFolder, // en.wikipedia.org/wiki/Constant_folding
       new ArgumentStuffer // fill args arrays in Commands & Reporters

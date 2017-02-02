@@ -5,7 +5,7 @@ package org.nlogo.compile
 import org.scalatest.FunSuite
 import org.nlogo.api.{ DummyExtensionManager, Version }
 import org.nlogo.core.{ DummyCompilationEnvironment, Program }
-import org.nlogo.nvm.Procedure.NoProcedures
+import org.nlogo.nvm.ProcedureInterface.NoProcedures
 
 
 class TestGenerator extends FunSuite {

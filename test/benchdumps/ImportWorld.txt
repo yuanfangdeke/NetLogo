@@ -281,7 +281,7 @@ procedure BENCHMARK:[NAME SALT]{O---}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           ALOAD 2
           AASTORE
@@ -391,7 +391,7 @@ procedure BENCHMARK:[NAME SALT]{O---}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_1
           ALOAD 2
           AASTORE
@@ -418,7 +418,7 @@ procedure BENCHMARK:[NAME SALT]{O---}:
          L3
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_1
           AALOAD
          L4
@@ -434,7 +434,7 @@ procedure BENCHMARK:[NAME SALT]{O---}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           ALOAD 2
           AASTORE
@@ -457,7 +457,7 @@ procedure BENCHMARK:[NAME SALT]{O---}:
            L0
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_0
             AALOAD
            L1
@@ -469,7 +469,7 @@ procedure BENCHMARK:[NAME SALT]{O---}:
            L0
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_0
             AALOAD
            L1

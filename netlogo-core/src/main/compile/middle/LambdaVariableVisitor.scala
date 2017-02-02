@@ -36,7 +36,7 @@ private object LambdaVariableVisitor {
 
   case class LiftedLambda(procdef: ProcedureDefinition) extends FormalProvider {
     def letForName(varName: String): Option[Let] = procdef.procedure match {
-      case ll: nvm.LiftedLambda =>
+      case ll: nvm.LiftedLambdaInterface =>
         ll.getLambdaFormal(varName) orElse ll.closedLets.find(_.name.equalsIgnoreCase(varName))
       case _ => None
     }
@@ -47,7 +47,7 @@ import LambdaVariableVisitor._
 
 class LambdaVariableVisitor extends DefaultAstVisitor {
   private var lambdaStack = Stack[FormalProvider]()
-  private var procedure = Option.empty[nvm.Procedure]
+  private var procedure = Option.empty[nvm.ProcedureInterface]
 
   override def visitProcedureDefinition(procdef: ProcedureDefinition) {
     procedure = Some(procdef.procedure)

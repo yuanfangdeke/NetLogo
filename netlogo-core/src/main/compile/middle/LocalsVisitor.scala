@@ -4,7 +4,7 @@ package org.nlogo.compile
 package middle
 
 import org.nlogo.core.{ ClosedLet, ClosedVariable, I18N, Let }
-import org.nlogo.nvm.{ Instruction, Procedure }
+import org.nlogo.nvm.{ Instruction, ProcedureInterface }
 import org.nlogo.prim._
 import org.nlogo.compile.api.{ AstFolder, DefaultAstVisitor, ProcedureDefinition, Statement, ReporterApp }
 
@@ -18,10 +18,10 @@ import org.nlogo.compile.api.{ AstFolder, DefaultAstVisitor, ProcedureDefinition
  * We also do the same thing with "repeat", which by default uses the "let" mechanism, but must be
  * changed to use the "locals" mechanism when used outside "ask". */
 
-class LocalsVisitor(alteredLets: collection.mutable.Map[Procedure, collection.mutable.Map[Let, Int]])
+class LocalsVisitor(alteredLets: collection.mutable.Map[ProcedureInterface, collection.mutable.Map[Let, Int]])
 extends DefaultAstVisitor {
 
-  private var procedure: Option[Procedure] = Option.empty[Procedure]
+  private var procedure: Option[ProcedureInterface] = Option.empty[ProcedureInterface]
   private var localEligibility: Map[Let, Boolean] = Map()
   private var askNestingLevel = 0
 
@@ -138,7 +138,7 @@ extends DefaultAstVisitor {
     stmt.command = newSet
   }
 
-  private def lookupLet(let: Let, procedure: Procedure): Option[Int] = {
+  private def lookupLet(let: Let, procedure: ProcedureInterface): Option[Int] = {
     if (procedure == null) None
     else alteredLets.get(procedure).flatMap(_.get(let))
   }

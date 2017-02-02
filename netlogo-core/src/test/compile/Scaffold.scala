@@ -18,7 +18,7 @@ object Scaffold {
     val (coreDefs, results) = frontEnd.frontEnd(source)
     bridge(
       results,
-      nvm.Procedure.NoProcedures,
+      nvm.ProcedureInterface.NoProcedures,
       coreDefs,
       new Backifier(results.program, new DummyExtensionManager)
     )

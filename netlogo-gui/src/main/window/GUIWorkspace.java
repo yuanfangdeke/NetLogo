@@ -31,7 +31,7 @@ import org.nlogo.api.ReporterRunnable;
 import org.nlogo.api.SimpleJobOwner;
 import org.nlogo.shape.ShapeConverter;
 import org.nlogo.log.Logger;
-import org.nlogo.nvm.Procedure;
+import org.nlogo.nvm.ProcedureInterface;
 import org.nlogo.nvm.Workspace;
 
 import java.util.HashMap;
@@ -1030,7 +1030,7 @@ public abstract strictfp class GUIWorkspace // can't be both abstract and strict
 
       // check to see if the error occurred inside a "run" or "runresult" instruction;
       // if so, report the error as having occurred there - ST 5/7/03
-      org.nlogo.api.SourceOwner sourceOwner = context.activation.procedure.owner();
+      org.nlogo.api.SourceOwner sourceOwner = context.activation.procedure().owner();
       if (instruction.token() == null) {
         posAndLength = new int[]{-1, 0};
       } else {
@@ -1089,7 +1089,7 @@ public abstract strictfp class GUIWorkspace // can't be both abstract and strict
     clearDrawing();
     viewManager().resetMouseCors();
     displaySwitchOn(true);
-    setProcedures(new scala.collection.immutable.ListMap<String, Procedure>());
+    setProcedures(new scala.collection.immutable.ListMap<String, ProcedureInterface>());
     lastTicksListenersHeard = -1.0;
     plotManager().forgetAll();
   }

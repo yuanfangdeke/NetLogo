@@ -25,13 +25,13 @@ reporter procedure ACTIVATION-FUNCTION:[X]{OTPL}:
          L1
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L2
           AASTORE
           ICONST_0
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           INVOKEVIRTUAL org/nlogo/nvm/Context.callReporterProcedure (Lorg/nlogo/nvm/Activation;)Ljava/lang/Object;
@@ -60,8 +60,8 @@ reporter procedure ACTIVATION-FUNCTION:[X]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L4
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -82,8 +82,8 @@ reporter procedure ACTIVATION-FUNCTION:[X]{OTPL}:
          FRAME APPEND [java/lang/Object]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L5
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -136,7 +136,7 @@ reporter procedure APPLY:[INPUT]{OTPL}:
              L0
               ALOAD 1
               GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-              GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+              INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
               ICONST_0
               AALOAD
              L1
@@ -265,13 +265,13 @@ reporter procedure APPLY:[INPUT]{OTPL}:
          L1
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L2
           AASTORE
           ICONST_1
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           INVOKEVIRTUAL org/nlogo/nvm/Context.callReporterProcedure (Lorg/nlogo/nvm/Activation;)Ljava/lang/Object;
@@ -300,8 +300,8 @@ reporter procedure APPLY:[INPUT]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L4
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -322,8 +322,8 @@ reporter procedure APPLY:[INPUT]{OTPL}:
          FRAME APPEND [java/lang/Object]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L5
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -377,13 +377,13 @@ reporter procedure APPLY:[INPUT]{OTPL}:
          L1
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L2
           AASTORE
           ICONST_3
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           INVOKEVIRTUAL org/nlogo/nvm/Context.callReporterProcedure (Lorg/nlogo/nvm/Activation;)Ljava/lang/Object;
@@ -412,8 +412,8 @@ reporter procedure APPLY:[INPUT]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L4
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -434,8 +434,8 @@ reporter procedure APPLY:[INPUT]{OTPL}:
          FRAME APPEND [java/lang/Object]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L5
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -490,7 +490,7 @@ reporter procedure APPLY-BOOLS:[INPUT RES]{OTPL}:
                    L0
                     ALOAD 1
                     GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                    GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                    INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                     ALOAD 0
                     GETFIELD org/nlogo/prim/_asm_procedureapplybools_letvariable_1.kept1__let : Lorg/nlogo/core/Let;
                     INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -513,7 +513,7 @@ reporter procedure APPLY-BOOLS:[INPUT RES]{OTPL}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
                 ICONST_0
                 AALOAD
                L1
@@ -535,7 +535,7 @@ reporter procedure APPLY-BOOLS:[INPUT RES]{OTPL}:
           INVOKEVIRTUAL org/nlogo/prim/etc/_map.report (Lorg/nlogo/nvm/Context;)Ljava/lang/Object;
           AASTORE
           ICONST_0
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           INVOKEVIRTUAL org/nlogo/nvm/Context.callReporterProcedure (Lorg/nlogo/nvm/Activation;)Ljava/lang/Object;
@@ -553,7 +553,7 @@ reporter procedure APPLY-BOOLS:[INPUT RES]{OTPL}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_1
           ALOAD 2
           AASTORE
@@ -572,7 +572,7 @@ reporter procedure APPLY-BOOLS:[INPUT RES]{OTPL}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_procedureapplybools_greaterthan_6.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -638,7 +638,7 @@ reporter procedure APPLY-BOOLS:[INPUT RES]{OTPL}:
              L0
               ALOAD 1
               GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-              GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+              INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
               ICONST_1
               AALOAD
              L1
@@ -662,8 +662,8 @@ reporter procedure APPLY-BOOLS:[INPUT RES]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L1
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -684,8 +684,8 @@ reporter procedure APPLY-BOOLS:[INPUT RES]{OTPL}:
          FRAME APPEND [java/lang/Object]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L2
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -747,13 +747,13 @@ reporter procedure APPLY-REALS:[INPUT]{OTPL}:
          L1
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L2
           AASTORE
           ICONST_1
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -773,7 +773,7 @@ reporter procedure APPLY-REALS:[INPUT]{OTPL}:
           SIPUSH 0
           ANEWARRAY java/lang/Object
           ICONST_2
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -793,7 +793,7 @@ reporter procedure APPLY-REALS:[INPUT]{OTPL}:
                L6
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_procedureapplyreals_turtlevariableof_3.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -937,8 +937,8 @@ reporter procedure APPLY-REALS:[INPUT]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L1
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -959,8 +959,8 @@ reporter procedure APPLY-REALS:[INPUT]{OTPL}:
          FRAME APPEND [java/lang/Object]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L2
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -1068,7 +1068,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
           SIPUSH 0
           ANEWARRAY java/lang/Object
           ICONST_3
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -1088,7 +1088,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
           SIPUSH 0
           ANEWARRAY java/lang/Object
           ICONST_4
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -1107,7 +1107,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
           DSTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           NEW org/nlogo/nvm/MutableLong
           DUP
@@ -1348,7 +1348,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
          L4
           AASTORE
           BIPUSH 7
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -1376,7 +1376,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
           SIPUSH 0
           ANEWARRAY java/lang/Object
           BIPUSH 9
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -1390,7 +1390,7 @@ procedure BENCHMARK:[_repeatlocal:0]{O---}:
          L0
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
           CHECKCAST org/nlogo/nvm/MutableLong
@@ -1922,7 +1922,7 @@ procedure CLICK-INPUT:[]{OTPL}:
           INVOKEVIRTUAL org/nlogo/prim/etc/_ifelsevalue.report (Lorg/nlogo/nvm/Context;)Ljava/lang/Object;
           AASTORE
           ICONST_4
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -1942,7 +1942,7 @@ procedure CLICK-INPUT:[]{OTPL}:
           SIPUSH 0
           ANEWARRAY java/lang/Object
           ICONST_5
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -1982,7 +1982,7 @@ reporter procedure GET-BIASES:[]{OTPL}:
                L6
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_proceduregetbiases_turtlevariableof_1.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -2241,8 +2241,8 @@ reporter procedure GET-BIASES:[]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L1
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -2263,8 +2263,8 @@ reporter procedure GET-BIASES:[]{OTPL}:
          FRAME APPEND [java/lang/Object]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L2
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -2322,7 +2322,7 @@ reporter procedure GET-OUTPUT:[]{OTPL}:
                L6
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_proceduregetoutput_greaterthan_1.kept3__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -2521,8 +2521,8 @@ reporter procedure GET-OUTPUT:[]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L1
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -2543,8 +2543,8 @@ reporter procedure GET-OUTPUT:[]{OTPL}:
          FRAME APPEND [java/lang/Object]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L2
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -2602,7 +2602,7 @@ reporter procedure GET-WEIGHTS:[]{OTPL}:
                L5
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_proceduregetweights_linkvariableof_1.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -2870,8 +2870,8 @@ reporter procedure GET-WEIGHTS:[]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L1
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -2892,8 +2892,8 @@ reporter procedure GET-WEIGHTS:[]{OTPL}:
          FRAME APPEND [java/lang/Object]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L2
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -3049,7 +3049,7 @@ procedure PROPOGATE:[]{OTPL}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromprocedurepropogateask1updateactivationupdateactivation_ask_0.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -3165,7 +3165,7 @@ procedure PROPOGATE:[]{OTPL}:
                 SIPUSH 1
                 ANEWARRAY java/lang/Object
                 ICONST_2
-                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
                 ALOAD 1
                 SWAP
                 PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -3302,7 +3302,7 @@ procedure RANDOMIZE-WEIGHTS:[]{OTPL}:
           INVOKESPECIAL java/lang/Double.<init> (D)V
           AASTORE
           ICONST_2
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -3429,7 +3429,7 @@ procedure RANDOMIZE-WEIGHTS:[]{OTPL}:
           INVOKESPECIAL java/lang/Double.<init> (D)V
           AASTORE
           ICONST_5
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -3727,7 +3727,7 @@ procedure SET-ACTIVATION:[A]{-T--}:
          L3
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L4
@@ -3769,7 +3769,7 @@ procedure SET-ACTIVATION:[A]{-T--}:
           SIPUSH 0
           ANEWARRAY java/lang/Object
           ICONST_2
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -3864,7 +3864,7 @@ procedure SET-BIAS:[B]{-T--}:
          L3
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L4
@@ -3902,7 +3902,7 @@ procedure SET-BIAS:[B]{-T--}:
              L0
               ALOAD 1
               GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-              GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+              INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
               ICONST_0
               AALOAD
              L1
@@ -4088,7 +4088,7 @@ procedure SET-BIASES:[BIASES]{OTPL}:
            L0
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_0
             AALOAD
            L1
@@ -4113,7 +4113,7 @@ procedure SET-BIASES:[BIASES]{OTPL}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetbiasesask1setbias2setbias2_ask_0.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -4235,14 +4235,14 @@ procedure SET-BIASES:[BIASES]{OTPL}:
                L1
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetbiasesask1setbias2setbias2_call_1.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
                L2
                 AASTORE
                 ICONST_2
-                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
                 ALOAD 1
                 SWAP
                 PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -4285,7 +4285,7 @@ procedure SET-INPUT:[INPUT]{OTPL}:
            L0
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_0
             AALOAD
            L1
@@ -4310,7 +4310,7 @@ procedure SET-INPUT:[INPUT]{OTPL}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetinputask1setactivation2setactivation2_ask_0.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -4432,14 +4432,14 @@ procedure SET-INPUT:[INPUT]{OTPL}:
                L1
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetinputask1setactivation2setactivation2_call_1.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
                L2
                 AASTORE
                 ICONST_2
-                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
                 ALOAD 1
                 SWAP
                 PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -4473,7 +4473,7 @@ procedure SET-WEIGHT:[W]{---L}:
          L3
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L4
@@ -4515,7 +4515,7 @@ procedure SET-WEIGHT:[W]{---L}:
           SIPUSH 1
           ANEWARRAY java/lang/Object
           ICONST_2
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -4666,7 +4666,7 @@ procedure SET-WEIGHTS:[WEIGHTS]{OTPL}:
            L0
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_0
             AALOAD
            L1
@@ -4691,7 +4691,7 @@ procedure SET-WEIGHTS:[WEIGHTS]{OTPL}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetweightsask1setweight2setweight2_ask_0.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -4813,14 +4813,14 @@ procedure SET-WEIGHTS:[WEIGHTS]{OTPL}:
                L1
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetweightsask1setweight2setweight2_call_1.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
                L2
                 AASTORE
                 ICONST_2
-                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
                 ALOAD 1
                 SWAP
                 PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -4905,7 +4905,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
          L0
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L1
@@ -4951,7 +4951,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
           ALOAD 0
           GETFIELD org/nlogo/prim/_asm_proceduresetup_let_3.kept1__let : Lorg/nlogo/core/Let;
           ALOAD 2
@@ -4968,7 +4968,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
              L0
               ALOAD 1
               GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-              GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+              INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
               ICONST_0
               AALOAD
              L1
@@ -4981,7 +4981,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_1
           ALOAD 2
           AASTORE
@@ -5009,7 +5009,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
              L4
               ALOAD 1
               GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-              GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+              INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
               ALOAD 0
               GETFIELD org/nlogo/prim/_asm_proceduresetup_list_7.kept4__let : Lorg/nlogo/core/Let;
               INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -5066,7 +5066,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_2
           ALOAD 2
           AASTORE
@@ -5089,7 +5089,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
              L1
               ALOAD 1
               GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-              GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+              INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
               ICONST_1
               AALOAD
              L2
@@ -5111,7 +5111,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_3
           ALOAD 2
           AASTORE
@@ -5132,7 +5132,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
            L0
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_2
             AALOAD
            L1
@@ -5144,7 +5144,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
            L2
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_3
             AALOAD
            L3
@@ -5183,7 +5183,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
            L0
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_3
             AALOAD
            L1
@@ -5213,7 +5213,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
            L0
             ALOAD 1
             GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-            GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+            INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
             ICONST_0
             AALOAD
            L1
@@ -5835,7 +5835,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_let_0.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -5843,7 +5843,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                 ASTORE 2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_let_0.kept1__let : Lorg/nlogo/core/Let;
                 ALOAD 2
@@ -5906,7 +5906,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                 ASTORE 2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_let_1.kept1__let : Lorg/nlogo/core/Let;
                 ALOAD 2
@@ -5928,7 +5928,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                 ASTORE 2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_let_2.kept1__let : Lorg/nlogo/core/Let;
                 ALOAD 2
@@ -5944,7 +5944,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                  L0
                   ALOAD 1
                   GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                  GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                  INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                   ALOAD 0
                   GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_letvariable_3.kept1__let : Lorg/nlogo/core/Let;
                   INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -5957,7 +5957,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                    L0
                     ALOAD 1
                     GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                    GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                    INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                     ALOAD 0
                     GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_letvariable_5.kept1__let : Lorg/nlogo/core/Let;
                     INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -5980,7 +5980,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                 ASTORE 2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_setletvariable_4.kept1__let : Lorg/nlogo/core/Let;
                 ALOAD 2
@@ -6016,7 +6016,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L4
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_let_8.kept5__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6054,7 +6054,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L8
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_let_8.kept7__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6125,7 +6125,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                 ASTORE 2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_let_8.kept1__let : Lorg/nlogo/core/Let;
                 ALOAD 2
@@ -6146,7 +6146,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                 ASTORE 2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_let_9.kept1__let : Lorg/nlogo/core/Let;
                 ALOAD 2
@@ -6170,7 +6170,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                  L0
                   ALOAD 1
                   GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                  GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                  INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                   ALOAD 0
                   GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_sort_10.kept2__let : Lorg/nlogo/core/Let;
                   INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6305,7 +6305,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                    L0
                     ALOAD 1
                     GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                    GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                    INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                     ALOAD 0
                     GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetuplet1letlengthlayersletnoturtlescrtlayersizesetlayerturtlesetlayerselfsetlayerturtlesetlayerselfletlayernum05numlayersmaxpxcorlet0foreachsortlayer1ask1lety205i05layersizemaxpycorsetxyxysetcolorgreysetii1setlayerslputlayerlayers_letvariable_12.kept1__let : Lorg/nlogo/core/Let;
                     INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6375,7 +6375,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1let205i05layersizemaxpycorsetxyxysetcolorgreylet205i05layersizemaxpycorsetxyxysetcolorgreysetii1_ask_0.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6506,7 +6506,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L6
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1let205i05layersizemaxpycorsetxyxysetcolorgreylet205i05layersizemaxpycorsetxyxysetcolorgreysetii1_let_1.kept9__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6544,7 +6544,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L10
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1let205i05layersizemaxpycorsetxyxysetcolorgreylet205i05layersizemaxpycorsetxyxysetcolorgreysetii1_let_1.kept11__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6633,7 +6633,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                 ASTORE 2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1let205i05layersizemaxpycorsetxyxysetcolorgreylet205i05layersizemaxpycorsetxyxysetcolorgreysetii1_let_1.kept1__let : Lorg/nlogo/core/Let;
                 ALOAD 2
@@ -6654,7 +6654,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L7
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1let205i05layersizemaxpycorsetxyxysetcolorgreylet205i05layersizemaxpycorsetxyxysetcolorgreysetii1_setxy_2.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6681,7 +6681,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                FRAME SAME1 D
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1let205i05layersizemaxpycorsetxyxysetcolorgreylet205i05layersizemaxpycorsetxyxysetcolorgreysetii1_setxy_2.kept3__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6807,7 +6807,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1let205i05layersizemaxpycorsetxyxysetcolorgreylet205i05layersizemaxpycorsetxyxysetcolorgreysetii1_setletvariable_5.kept3__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6851,7 +6851,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                 ASTORE 2
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1let205i05layersizemaxpycorsetxyxysetcolorgreylet205i05layersizemaxpycorsetxyxysetcolorgreysetii1_setletvariable_5.kept1__let : Lorg/nlogo/core/Let;
                 ALOAD 2
@@ -6877,7 +6877,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L0
                 ALOAD 1
                 GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                 ALOAD 0
                 GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1createlinksfrom2setweight0createlinksfrom2setweight0setweight0_ask_0.kept2__let : Lorg/nlogo/core/Let;
                 INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -6988,7 +6988,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                  L0
                   ALOAD 1
                   GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-                  GETFIELD org/nlogo/nvm/Activation.binding : Lorg/nlogo/nvm/Binding;
+                  INVOKEVIRTUAL org/nlogo/nvm/Activation.binding ()Lorg/nlogo/nvm/Binding;
                   ALOAD 0
                   GETFIELD org/nlogo/prim/_asm_anonymouscommandfromproceduresetupask1createlinksfrom2setweight0createlinksfrom2setweight0setweight0_letvariable_1.kept1__let : Lorg/nlogo/core/Let;
                   INVOKEVIRTUAL org/nlogo/nvm/Binding.getLet (Lorg/nlogo/core/Let;)Ljava/lang/Object;
@@ -7013,7 +7013,7 @@ procedure SETUP:[LAYER-COUNTS MAX-LAYER-SIZE MAX-X MAX-Y]{O---}:
                L2
                 AASTORE
                 ICONST_3
-                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+                INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
                 ALOAD 1
                 SWAP
                 PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -7075,7 +7075,7 @@ procedure SETUP-TESTING:[]{O---}:
           INVOKEVIRTUAL org/nlogo/prim/etc/_runresult.report (Lorg/nlogo/nvm/Context;)Ljava/lang/Object;
           AASTORE
           ICONST_1
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -7115,7 +7115,7 @@ reporter procedure SIGMOID:[X]{OTPL}:
          L5
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L6
@@ -7204,8 +7204,8 @@ reporter procedure SIGMOID:[X]{OTPL}:
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
           INVOKEVIRTUAL org/nlogo/nvm/Activation.nonLambdaActivation ()Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isReporter ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isReporter ()Z
           IFNE L13
           NEW org/nlogo/nvm/RuntimePrimitiveException
           DUP
@@ -7226,8 +7226,8 @@ reporter procedure SIGMOID:[X]{OTPL}:
          FRAME FULL [org/nlogo/prim/_asm_proceduresigmoid_report_0 org/nlogo/nvm/Context java/lang/Double T D] []
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.procedure : Lorg/nlogo/nvm/Procedure;
-          INVOKEVIRTUAL org/nlogo/nvm/Procedure.isLambda ()Z
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.procedure ()Lorg/nlogo/nvm/ProcedureInterface;
+          INVOKEINTERFACE org/nlogo/nvm/ProcedureInterface.isLambda ()Z
           IFEQ L14
           NEW org/nlogo/nvm/NonLocalExit
           DUP
@@ -7543,7 +7543,7 @@ procedure UPDATE-ACTIVATION:[INCOMING]{-T--}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           ALOAD 2
           AASTORE
@@ -7625,7 +7625,7 @@ procedure UPDATE-ACTIVATION:[INCOMING]{-T--}:
          FRAME FULL [org/nlogo/prim/_asm_procedureupdateactivation_call_2 org/nlogo/nvm/Context java/lang/Object] [L7 L7 org/nlogo/nvm/Procedure org/nlogo/nvm/Activation [Ljava/lang/Object; [Ljava/lang/Object; I L8 L8 org/nlogo/nvm/Procedure org/nlogo/nvm/Activation [Ljava/lang/Object; [Ljava/lang/Object; I D]
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L11
@@ -7665,7 +7665,7 @@ procedure UPDATE-ACTIVATION:[INCOMING]{-T--}:
           INVOKESPECIAL java/lang/Double.<init> (D)V
           AASTORE
           ICONST_1
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           INVOKEVIRTUAL org/nlogo/nvm/Context.callReporterProcedure (Lorg/nlogo/nvm/Activation;)Ljava/lang/Object;
@@ -7682,7 +7682,7 @@ procedure UPDATE-ACTIVATION:[INCOMING]{-T--}:
          FRAME FULL [org/nlogo/prim/_asm_procedureupdateactivation_call_2 org/nlogo/nvm/Context D D] [L7 L7 org/nlogo/nvm/Procedure org/nlogo/nvm/Activation [Ljava/lang/Object; [Ljava/lang/Object; I java/lang/Object]
           AASTORE
           ICONST_2
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           PUTFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
@@ -7740,7 +7740,7 @@ procedure UPDATE-LINK-LOOK:[W]{---L}:
          FRAME FULL [org/nlogo/prim/_asm_procedureupdatelinklook_setprocedurevariable_0 org/nlogo/nvm/Context] [L3 L3 org/nlogo/nvm/Procedure org/nlogo/nvm/Activation [Ljava/lang/Object; [Ljava/lang/Object; I java/lang/Object]
           AASTORE
           ICONST_0
-          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
+          INVOKESPECIAL org/nlogo/nvm/Activation.<init> (Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V
           ALOAD 1
           SWAP
           INVOKEVIRTUAL org/nlogo/nvm/Context.callReporterProcedure (Lorg/nlogo/nvm/Activation;)Ljava/lang/Object;
@@ -7758,7 +7758,7 @@ procedure UPDATE-LINK-LOOK:[W]{---L}:
           ASTORE 2
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           ALOAD 2
           AASTORE
@@ -7775,7 +7775,7 @@ procedure UPDATE-LINK-LOOK:[W]{---L}:
          L0
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L1
@@ -7882,7 +7882,7 @@ procedure UPDATE-LINK-LOOK:[W]{---L}:
          L0
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L1
@@ -7962,7 +7962,7 @@ procedure UPDATE-LINK-LOOK:[W]{---L}:
          L0
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L1
@@ -8072,7 +8072,7 @@ procedure UPDATE-LINK-LOOK:[W]{---L}:
          L5
           ALOAD 1
           GETFIELD org/nlogo/nvm/Context.activation : Lorg/nlogo/nvm/Activation;
-          GETFIELD org/nlogo/nvm/Activation.args : [Ljava/lang/Object;
+          INVOKEVIRTUAL org/nlogo/nvm/Activation.args ()[Ljava/lang/Object;
           ICONST_0
           AALOAD
          L6

@@ -8,10 +8,10 @@ import
 import
 org.nlogo.{core, agent, api, nvm},
     agent.OutputObject,
-    api.{ExtensionManager => APIExtensionManager, World},
-    core.{ Dialect, LiteralImportHandler, CompilationEnvironment, CompilerUtilitiesInterface,
-          File, FileMode, FrontEndInterface, Program},
-    nvm.{Procedure, CompilerFlags, CompilerInterface, CompilerResults, Reporter},
+    api.{ExtensionManager => APIExtensionManager, SourceOwner, World},
+    core.{ CompilerException, Dialect, LiteralImportHandler, CompilationEnvironment,
+           CompilerUtilitiesInterface, File, FileMode, FrontEndInterface, Program},
+    nvm.{ProcedureInterface, CompilerFlags, CompilerInterface, CompilerResults, Reporter},
       FrontEndInterface.ProceduresMap
 
 import
@@ -299,12 +299,15 @@ class DefaultFileManagerTests extends FunSuite with OneInstancePerTest {
                                 compilationEnvironment: CompilationEnvironment,
                                 flags: CompilerFlags): CompilerResults = ???
 
+    @throws(classOf[CompilerException])
+    override def compileProgram(source: String, additionalSources: Seq[SourceOwner], program: Program, extensionManager: APIExtensionManager, compilationEnv: CompilationEnvironment): CompilerResults = ???
+
     override def makeLiteralReporter(value: AnyRef): Reporter = ???
 
     override def compileMoreCode(source: String,
                                  displayName: Option[String],
                                  program: Program,
-                                 oldProcedures: Procedure.ProceduresMap,
+                                 oldProcedures: ProcedureInterface.ProceduresMap,
                                  extensionManager: APIExtensionManager,
                                  compilationEnvironment: CompilationEnvironment,
                                  flags: CompilerFlags): CompilerResults = ???

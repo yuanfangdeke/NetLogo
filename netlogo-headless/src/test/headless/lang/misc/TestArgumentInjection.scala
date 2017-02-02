@@ -38,7 +38,7 @@ class TestArgumentInjection extends FixtureSuite {
     }
   }
 
-  def makeCommandCaller(ws: nvm.Workspace, name: String): nvm.Procedure = {
+  def makeCommandCaller(ws: nvm.Workspace, name: String): nvm.ProcedureInterface = {
     val proc = ws.procedures(name.toUpperCase)
     val command =
       name + " " + Seq.fill(proc.args.size)("0").mkString(" ")
@@ -47,7 +47,7 @@ class TestArgumentInjection extends FixtureSuite {
         flags = nvm.CompilerFlags(useGenerator = false))
   }
 
-  def makeReporterCaller(ws: nvm.Workspace, name: String): nvm.Procedure = {
+  def makeReporterCaller(ws: nvm.Workspace, name: String): nvm.ProcedureInterface = {
     val proc = ws.procedures(name.toUpperCase)
     val dummyArgs = Seq.fill(proc.args.size)("0").mkString(" ")
     ws.asInstanceOf[AbstractWorkspace]
@@ -60,13 +60,13 @@ class TestArgumentInjection extends FixtureSuite {
   def is(i: nvm.Instruction, name: String) =
     i.getClass.getSimpleName == name
 
-  def runCommandCaller(owner: api.JobOwner, caller: nvm.Procedure, args: AnyRef*) {
+  def runCommandCaller(owner: api.JobOwner, caller: nvm.ProcedureInterface, args: AnyRef*) {
     val call = caller.code.find(is(_, "_call")).get
     substituteArgs(call, args: _*)
     call.workspace.runCompiledCommands(owner, caller)
   }
 
-  def runReporterCaller(owner: api.JobOwner, caller: nvm.Procedure, args: AnyRef*): AnyRef = {
+  def runReporterCaller(owner: api.JobOwner, caller: nvm.ProcedureInterface, args: AnyRef*): AnyRef = {
     val call =
       caller.code.find(is(_, "_report")).get
         .args.find(is(_, "_callreport")).get

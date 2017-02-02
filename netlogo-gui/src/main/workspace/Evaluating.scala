@@ -5,7 +5,7 @@ package org.nlogo.workspace
 import org.nlogo.agent.{ Agent, AgentSet, ArrayAgentSet }
 import org.nlogo.core.{ AgentKind, CompilerException }
 import org.nlogo.api.{ CommandLogoThunk, JobOwner, LogoException, MersenneTwisterFast, ReporterLogoThunk, SimpleJobOwner }
-import org.nlogo.nvm.Procedure
+import org.nlogo.nvm.ProcedureInterface
 
 trait Evaluating { this: AbstractWorkspace =>
   var lastLogoException: LogoException = null
@@ -47,17 +47,17 @@ trait Evaluating { this: AbstractWorkspace =>
   def evaluateReporter(owner: JobOwner, source: String, agents: AgentSet) =
     evaluator.evaluateReporter(owner, source, agents)
   @throws(classOf[CompilerException])
-  def compileCommands(source: String): Procedure =
+  def compileCommands(source: String): ProcedureInterface =
     compileCommands(source, AgentKind.Observer)
   @throws(classOf[CompilerException])
-  def compileCommands(source: String, agentClass: AgentKind): Procedure =
+  def compileCommands(source: String, agentClass: AgentKind): ProcedureInterface =
     evaluator.compileCommands(source, agentClass)
   @throws(classOf[CompilerException])
-  def compileReporter(source: String): Procedure =
+  def compileReporter(source: String): ProcedureInterface =
     evaluator.compileReporter(source)
-  def runCompiledCommands(owner: JobOwner, procedure: Procedure): Boolean =
+  def runCompiledCommands(owner: JobOwner, procedure: ProcedureInterface): Boolean =
     evaluator.runCompiledCommands(owner, procedure)
-  def runCompiledReporter(owner: JobOwner, procedure: Procedure): AnyRef =
+  def runCompiledReporter(owner: JobOwner, procedure: ProcedureInterface): AnyRef =
     evaluator.runCompiledReporter(owner, procedure)
 
   @throws(classOf[CompilerException])

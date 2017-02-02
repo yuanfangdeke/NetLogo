@@ -10,7 +10,7 @@ import org.nlogo.api
 
 class AssemblerTests extends FunSuite {
 
-  def compile(keyword: String, source: String): nvm.Procedure = {
+  def compile(keyword: String, source: String): nvm.ProcedureInterface = {
     val defs = Scaffold.apply(
       keyword + " foo " + source + "\nend")
     assertResult(1)(defs.size)

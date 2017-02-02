@@ -45,10 +45,10 @@ trait Application extends AstNode {
  * represents a single procedure definition.  really just a container
  * for the procedure body, which is a Statements object.
  */
-class ProcedureDefinition(val procedure: nvm.Procedure, val statements: Statements) extends AstNode {
+class ProcedureDefinition(val procedure: nvm.ProcedureInterface, val statements: Statements) extends AstNode {
   val sourceLocation = SourceLocation(procedure.pos, procedure.end, procedure.filename)
   def accept(v: AstVisitor) { v.visitProcedureDefinition(this) }
-  def copy(procedure: nvm.Procedure = procedure, statements: Statements = statements) =
+  def copy(procedure: nvm.ProcedureInterface = procedure, statements: Statements = statements) =
     new ProcedureDefinition(procedure, statements)
 }
 

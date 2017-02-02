@@ -20,8 +20,8 @@ import
     JobOwner, LogoException, MersenneTwisterFast, ModelType, PreviewCommands, ReporterLogoThunk, SimpleJobOwner},
   core.{ CompilationEnvironment, CompilerUtilitiesInterface, Dialect, AgentKind, CompilerException, Femto, File, FileMode, LiteralParser},
   nvm.{ Activation, Command, Context, EngineException, FileManager, ImportHandler,
-    Instruction, Job, MutableLong, Procedure, RuntimePrimitiveException, Workspace },
-    Procedure.{ NoProcedures, ProceduresMap },
+    Instruction, Job, MutableLong, ProcedureInterface, RuntimePrimitiveException, Workspace },
+    ProcedureInterface.{ NoProcedures, ProceduresMap },
   plot.{ PlotExporter, PlotManager }
 
 import AbstractWorkspaceTraits._
@@ -65,7 +65,7 @@ extends api.LogoThunkFactory with LiteralParser
 with Workspace with Procedures with Plotting with Exporting with Evaluating with Benchmarking
 with Compiling with Profiling with Extensions with BehaviorSpace with Paths with Checksums
 with RunCache with Jobs with Warning with OutputArea with Importing
-with ExtendableWorkspace with ExtensionCompilationEnvironment {
+with ExtendableWorkspace with ExtensionCompilationEnvironment with APIConformant {
 
   world.parser_=(this)
 
@@ -93,14 +93,14 @@ with ExtendableWorkspace with ExtensionCompilationEnvironment {
         "The tick counter has not been started yet. Use RESET-TICKS.")
     world.tickCounter.tick()
     updatePlots(context)
-    requestDisplayUpdate(context, true)
+    requestDisplayUpdate(true)
   }
 
   def resetTicks(context: Context) {
     world.tickCounter.reset()
     setupPlots(context)
     updatePlots(context)
-    requestDisplayUpdate(context, true)
+    requestDisplayUpdate(true)
   }
 
   def clearTicks() {
@@ -345,15 +345,15 @@ object AbstractWorkspaceTraits {
     }
     def evaluateReporter(owner: JobOwner, source: String, agents: AgentSet) =
       evaluator.evaluateReporter(owner, source, agents)
-    def compileCommands(source: String): Procedure =
+    def compileCommands(source: String): ProcedureInterface =
       compileCommands(source, AgentKind.Observer)
-    def compileCommands(source: String, kind: AgentKind): Procedure =
+    def compileCommands(source: String, kind: AgentKind): ProcedureInterface =
       evaluator.compileCommands(source, kind)
-    def compileReporter(source: String): Procedure =
+    def compileReporter(source: String): ProcedureInterface =
       evaluator.compileReporter(source)
-    def runCompiledCommands(owner: JobOwner, procedure: Procedure): Boolean =
+    def runCompiledCommands(owner: JobOwner, procedure: ProcedureInterface): Boolean =
       evaluator.runCompiledCommands(owner, procedure)
-    def runCompiledReporter(owner: JobOwner, procedure: Procedure): AnyRef =
+    def runCompiledReporter(owner: JobOwner, procedure: ProcedureInterface): AnyRef =
       evaluator.runCompiledReporter(owner, procedure)
     def readFromString(string: String): AnyRef =
       evaluator.readFromString(string)
@@ -492,11 +492,11 @@ object AbstractWorkspaceTraits {
   // this is used to cache the compiled code used by the "run"
   // and "runresult" prims - ST 6/7/07
   trait RunCache { this: AbstractWorkspace =>
-    private val runCache = new java.util.WeakHashMap[String, Procedure]
+    private val runCache = new java.util.WeakHashMap[String, ProcedureInterface]
     def clearRunCache() {
       runCache.clear()
     }
-    def compileForRun(source: String, context: Context, reporter: Boolean): Procedure = {
+    def compileForRun(source: String, context: Context, reporter: Boolean): ProcedureInterface = {
       val key =
         source + "@" + context.activation.procedure.args.size +
           "@" + context.agentBit
@@ -703,5 +703,17 @@ object AbstractWorkspaceTraits {
         }
       }
     }
+  }
+
+  trait APIConformant {
+    var _behaviorSpaceExperimentName: String = ""
+    def behaviorSpaceExperimentName(name: String): Unit = {
+      _behaviorSpaceExperimentName = name
+    }
+    def behaviorSpaceExperimentName: String = _behaviorSpaceExperimentName
+    def getComponent[A <: AnyRef](componentClass: Class[A]): Option[A] = None
+    def inspectAgent(agent: org.nlogo.api.Agent,radius: Double): Unit = { }
+    def stopInspectingAgent(agent: org.nlogo.agent.Agent): Unit = { }
+    def stopInspectingDeadAgents(): Unit = { }
   }
 }

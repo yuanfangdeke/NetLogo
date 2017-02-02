@@ -2,7 +2,7 @@
 
 package org.nlogo.compile.middle
 
-import org.nlogo.nvm.Procedure
+import org.nlogo.nvm.ProcedureInterface
 import org.nlogo.prim.{ _ask, _askconcurrent, _repeat, _repeatinternal, _repeatlocal, _repeatlocalinternal }
 import org.nlogo.compile.api.{ DefaultAstVisitor, ProcedureDefinition, Statement }
 
@@ -11,7 +11,7 @@ import org.nlogo.compile.api.{ DefaultAstVisitor, ProcedureDefinition, Statement
  * count. The parallel of LocalsVisitor, but used with `repeat` instead of `let`. */
 
 private class RepeatVisitor extends DefaultAstVisitor {
-  private var procedure: Option[Procedure] = Option.empty[Procedure]
+  private var procedure: Option[ProcedureInterface] = Option.empty[ProcedureInterface]
   private var askNestingLevel = 0
   private var vn = 0   // used when converting _repeat to _repeatlocal
 

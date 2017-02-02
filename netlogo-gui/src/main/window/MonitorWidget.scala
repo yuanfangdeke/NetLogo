@@ -5,7 +5,7 @@ package org.nlogo.window
 import org.nlogo.core.{ AgentKind, AgentKindJ, I18N, Monitor => CoreMonitor }
 import org.nlogo.api.{ Dump, Editable, MersenneTwisterFast, Property }
 import org.nlogo.awt.{ Fonts => NlogoFonts }
-import org.nlogo.nvm.Procedure
+import org.nlogo.nvm.ProcedureInterface
 import org.nlogo.window.Events.{ AddJobEvent, EditWidgetEvent,
   RuntimeErrorEvent, PeriodicUpdateEvent, JobRemovedEvent, RemoveJobEvent }
 
@@ -123,7 +123,7 @@ class MonitorWidget(random: MersenneTwisterFast)
   override def ownsPrimaryJobs: Boolean =
     false
 
-  override def procedure_=(procedure: Procedure): Unit = {
+  override def procedure_=(procedure: ProcedureInterface): Unit = {
     super.procedure = procedure
     setForeground(if (procedure == null) AwtColor.RED else null)
     halt()

@@ -20,9 +20,9 @@ public final strictfp class _report extends Command {
     context.job.result = arg0;
     context.stopping = false;
     context.ip = next;
-    if (! context.activation.nonLambdaActivation().procedure.isReporter()) {
+    if (! context.activation.nonLambdaActivation().procedure().isReporter()) {
       throw new RuntimePrimitiveException(context, this, I18N.errorsJ().getN("org.nlogo.prim._report.canOnlyUseInToReport", displayName()));
-    } else if (context.activation.procedure.isLambda()) {
+    } else if (context.activation.procedure().isLambda()) {
       throw new NonLocalExit();
     } else if (!context.atTopActivation()) {
       // you can't report from inside an ask.  you can't write code like

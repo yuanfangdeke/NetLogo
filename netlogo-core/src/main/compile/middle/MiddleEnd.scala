@@ -29,7 +29,7 @@ object MiddleEnd extends MiddleEndInterface {
 
     // each Int is the position of that variable in the procedure's args list
     val alteredLets =
-      collection.mutable.Map[nvm.Procedure, collection.mutable.Map[core.Let, Int]]()
+      collection.mutable.Map[nvm.ProcedureInterface, collection.mutable.Map[core.Let, Int]]()
 
     val transformedProcedures = allDefs.map(transformProcedure)
 

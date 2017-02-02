@@ -92,28 +92,28 @@ class CustomGenerator(profilingEnabled: Boolean) {
     mv.visitInsn(DUP)
     // stack: Activation Activation
     mv.loadKeptField("procedure", thisInstrUID)
-    // stack: Activation Activation Procedure
+    // stack: Activation Activation ProcedureInterface
     mv.visitVarInsn(ALOAD, 1)
-    // stack: Activation Activation Procedure Context
+    // stack: Activation Activation ProcedureInterface Context
     mv.visitFieldInsn(GETFIELD, "org/nlogo/nvm/Context", "activation", "Lorg/nlogo/nvm/Activation;")
-    // stack: Activation Activation Procedure Activation
+    // stack: Activation Activation ProcedureInterface Activation
     mv.visitIntInsn(SIPUSH, instr.procedure.size)
-    // stack: Activation Activation Procedure Activation Int
+    // stack: Activation Activation ProcedureInterface Activation Int
     mv.visitTypeInsn(ANEWARRAY, "java/lang/Object")
-    // stack: Activation Activation Procedure Activation Args[]
+    // stack: Activation Activation ProcedureInterface Activation Args[]
     for (i <- 0 until (instr.procedure.args.size - instr.procedure.localsCount)) {
       mv.visitInsn(DUP)
-      // stack: Activation Activation Procedure Activation Args[] Args[]
+      // stack: Activation Activation ProcedureInterface Activation Args[] Args[]
       mv.push(i)
-      // stack: Activation Activation Procedure Activation Args[] i
+      // stack: Activation Activation ProcedureInterface Activation Args[] i
       mv.generateArgument(instr, i, classOf[Object], thisInstrUID)
-      // stack: Activation Activation Procedure Activation Args[] i Arg
+      // stack: Activation Activation ProcedureInterface Activation Args[] i Arg
       mv.visitInsn(AASTORE)
-      // stack: Activation Activation Procedure Activation Args[]
+      // stack: Activation Activation ProcedureInterface Activation Args[]
     }
     mv.push(instr.next)
-    // stack: Activation Activation Procedure Activation Args[] int
-    mv.visitMethodInsn(INVOKESPECIAL, "org/nlogo/nvm/Activation", "<init>", "(Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V", false)
+    // stack: Activation Activation ProcedureInterface Activation Args[] int
+    mv.visitMethodInsn(INVOKESPECIAL, "org/nlogo/nvm/Activation", "<init>", "(Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V", false)
     // operand stack: Activation
     // if profiling,we'll need an extra Activation on the stack.
     if (profilingEnabled) mv.visitInsn(DUP)
@@ -167,28 +167,28 @@ class CustomGenerator(profilingEnabled: Boolean) {
     mv.visitInsn(DUP)
     // stack: Activation Activation
     mv.loadKeptField("procedure", thisInstrUID)
-    // stack: Activation Activation Procedure
+    // stack: Activation Activation ProcedureInterface
     mv.visitVarInsn(ALOAD, 1)
-    // stack: Activation Activation Procedure Context
+    // stack: Activation Activation ProcedureInterface Context
     mv.visitFieldInsn(GETFIELD, "org/nlogo/nvm/Context", "activation", "Lorg/nlogo/nvm/Activation;")
-    // stack: Activation Activation Procedure Activation
+    // stack: Activation Activation ProcedureInterface Activation
     mv.visitIntInsn(SIPUSH, instr.procedure.size)
-    // stack: Activation Activation Procedure Activation Int
+    // stack: Activation Activation ProcedureInterface Activation Int
     mv.visitTypeInsn(ANEWARRAY, "java/lang/Object")
-    // stack: Activation Activation Procedure Activation Args[]
+    // stack: Activation Activation ProcedureInterface Activation Args[]
     for (i <- 0 until (instr.procedure.args.size - instr.procedure.localsCount)) {
       mv.visitInsn(DUP)
-      // stack: Activation Activation Procedure Activation Args[] Args[]
+      // stack: Activation Activation ProcedureInterface Activation Args[] Args[]
       mv.push(i)
-      // stack: Activation Activation Procedure Activation Args[] i
+      // stack: Activation Activation ProcedureInterface Activation Args[] i
       mv.generateArgument(instr, i, classOf[Object], thisInstrUID)
-      // stack: Activation Activation Procedure Activation Args[] i Arg
+      // stack: Activation Activation ProcedureInterface Activation Args[] i Arg
       mv.visitInsn(AASTORE)
-      // stack: Activation Activation Procedure Activation Args[]
+      // stack: Activation Activation ProcedureInterface Activation Args[]
     }
     mv.push(ip)
-    // stack: Activation Activation Procedure Activation Args[] int
-    mv.visitMethodInsn(INVOKESPECIAL, "org/nlogo/nvm/Activation", "<init>", "(Lorg/nlogo/nvm/Procedure;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V", false)
+    // stack: Activation Activation ProcedureInterface Activation Args[] int
+    mv.visitMethodInsn(INVOKESPECIAL, "org/nlogo/nvm/Activation", "<init>", "(Lorg/nlogo/nvm/ProcedureInterface;Lorg/nlogo/nvm/Activation;[Ljava/lang/Object;I)V", false)
     // if profiling,we'll need an extra Activation on the stack.
     if (profilingEnabled) mv.visitInsn(DUP)
     // operand stack: [Activation] Activation

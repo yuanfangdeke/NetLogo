@@ -4,7 +4,7 @@ package org.nlogo.compile
 package middle
 
 import org.nlogo.{ api, core, nvm },
-  nvm.Procedure
+  nvm.ProcedureInterface
 import org.nlogo.compile.api.{ Backifier => ApiBackifier, CommandBlock, Expression, ProcedureDefinition, ReporterApp, ReporterBlock, Statement, Statements }
 import scala.collection.immutable.ListMap
 
@@ -16,8 +16,8 @@ import scala.collection.immutable.ListMap
 // but right now, this is the only place in the code where we need
 // to do something like this with core ASTs.
 
-class ASTBackifier(backifier: ApiBackifier, procedures: ListMap[String, Procedure]) {
-  def backify(proc: nvm.Procedure, pd: core.ProcedureDefinition): ProcedureDefinition =
+class ASTBackifier(backifier: ApiBackifier, procedures: ListMap[String, ProcedureInterface]) {
+  def backify(proc: nvm.ProcedureInterface, pd: core.ProcedureDefinition): ProcedureDefinition =
     new ProcedureDefinition(proc, backify(pd.statements))
 
   def backify(expr: core.Expression): Expression =

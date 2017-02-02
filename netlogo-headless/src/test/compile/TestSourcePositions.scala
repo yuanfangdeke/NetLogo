@@ -6,7 +6,7 @@ import org.scalatest.FunSuite
 import org.nlogo.api.Version.useGenerator
 import org.nlogo.api.DummyExtensionManager
 import org.nlogo.core.{ DummyCompilationEnvironment, Program }
-import org.nlogo.nvm.Procedure.NoProcedures
+import org.nlogo.nvm.ProcedureInterface.NoProcedures
 
 class TestSourcePositions extends FunSuite {
   val program = Program.empty()

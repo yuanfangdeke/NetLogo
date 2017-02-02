@@ -7,7 +7,7 @@ import org.nlogo.core.Syntax;
 import org.nlogo.nvm.Activation;
 import org.nlogo.nvm.Command;
 import org.nlogo.nvm.Context;
-import org.nlogo.nvm.Procedure;
+import org.nlogo.nvm.ProcedureInterface;
 
 // Note that _call is "CustomGenerated".  That means that the bytecode
 // generator generates custom bytecode for _call, instead of using the
@@ -19,9 +19,9 @@ import org.nlogo.nvm.Procedure;
 public final strictfp class _call
     extends Command
     implements org.nlogo.nvm.CustomGenerated {
-  public final Procedure procedure;
+  public final ProcedureInterface procedure;
 
-  public _call(Procedure procedure) {
+  public _call(ProcedureInterface procedure) {
     this.procedure = procedure;
   }
 

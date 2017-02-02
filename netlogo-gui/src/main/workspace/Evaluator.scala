@@ -7,7 +7,7 @@ import org.nlogo.agent.ArrayAgentSet
 import org.nlogo.agent.{Agent, AgentSet, Observer, Turtle, Patch, Link}
 import org.nlogo.api.{ JobOwner, LogoException, ReporterLogoThunk, CommandLogoThunk}
 import org.nlogo.core.{ AgentKind, CompilerException }
-import org.nlogo.nvm.{ExclusiveJob, Activation, Context, Procedure}
+import org.nlogo.nvm.{ExclusiveJob, Activation, Context, ProcedureInterface}
 
 import scala.collection.immutable.Vector
 import scala.util.Try
@@ -32,7 +32,7 @@ class Evaluator(workspace: AbstractWorkspace) {
   }
 
   @throws(classOf[CompilerException])
-  def compileCommands(source: String, agentClass: AgentKind): Procedure =
+  def compileCommands(source: String, agentClass: AgentKind): ProcedureInterface =
     invokeCompiler(source, None, true, agentClass)
 
   @throws(classOf[CompilerException])
@@ -42,13 +42,13 @@ class Evaluator(workspace: AbstractWorkspace) {
   /**
    * @return whether the code did a "stop" at the top level
    */
-  def runCompiledCommands(owner: JobOwner, procedure: Procedure) = {
+  def runCompiledCommands(owner: JobOwner, procedure: ProcedureInterface) = {
     val job = workspace.jobManager.makeConcurrentJob(owner, workspace.world.observers, workspace, procedure)
     workspace.jobManager.addJob(job, true)
     job.stopping
   }
 
-  def runCompiledReporter(owner: JobOwner, procedure: Procedure) =
+  def runCompiledReporter(owner: JobOwner, procedure: ProcedureInterface) =
     workspace.jobManager.addReporterJobAndWait(owner, workspace.world.observers, workspace, procedure)
 
   ///
@@ -68,7 +68,7 @@ class Evaluator(workspace: AbstractWorkspace) {
 
   private object ProcedureRunner {
     var context: Context = null
-    def run(p: Procedure, ownerOption: Option[JobOwner] = None): Try[Boolean] = {
+    def run(p: ProcedureInterface, ownerOption: Option[JobOwner] = None): Try[Boolean] = {
       val oldActivation = context.activation
       val newActivation = new Activation(p, context.activation, 1)
       val oldRandom = context.job.random
@@ -76,8 +76,7 @@ class Evaluator(workspace: AbstractWorkspace) {
       context.job.random = ownerOption.map(_.random).getOrElse(workspace.world.mainRNG.clone)
       val procedureResult = Try {
         context.runExclusiveJob(workspace.world.observers, 0)
-        val stopped = workspace.completedActivations.get(newActivation) != true
-        stopped
+        ! workspace.completedActivations.get(newActivation).contains(true)
       }
       context.activation = oldActivation
       context.job.random = oldRandom
@@ -118,7 +117,7 @@ class Evaluator(workspace: AbstractWorkspace) {
     }
 
   @throws(classOf[CompilerException])
-  private class MyLogoThunk(source: String, agent: Agent, owner: JobOwner, command: Boolean, val procedure: Procedure) {
+  private class MyLogoThunk(source: String, agent: Agent, owner: JobOwner, command: Boolean, val procedure: ProcedureInterface) {
     val agentset = AgentSet.fromAgent(agent)
     procedure.topLevel = false
   }
@@ -127,7 +126,7 @@ class Evaluator(workspace: AbstractWorkspace) {
 
   @throws(classOf[CompilerException])
   def invokeCompilerForRun(source: String, agentClass: AgentKind,
-    callingProcedure: Procedure, reporter: Boolean): Procedure = {
+    callingProcedure: ProcedureInterface, reporter: Boolean): ProcedureInterface = {
 
     val vars =
       if (callingProcedure == null) Vector[String]()

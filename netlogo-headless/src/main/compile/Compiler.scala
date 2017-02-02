@@ -3,8 +3,10 @@
 package org.nlogo.compile
 
 import org.nlogo.{ api => nlogoApi, core, nvm },
+  nlogoApi.{ ExtensionManager, SourceOwner },
   core.{ CompilationEnvironment, Femto, CompilerUtilitiesInterface, FrontEndInterface, Program},
-  nvm.Procedure.{ ProceduresMap, NoProcedures }
+  nvm.{ CompilerResults, ProcedureInterface },
+    ProcedureInterface.{ ProceduresMap, NoProcedures }
 
 import org.nlogo.compile.api.{ Backifier => BackifierInterface, BackEndInterface,
   CommandMunger, FrontMiddleBridgeInterface, MiddleEndInterface, Optimizations, ReporterMunger }
@@ -49,6 +51,8 @@ object Compiler extends nvm.CompilerInterface {
     val allDefs = middleEnd.middleEnd(bridged, Map("" -> source), compilationEnvironment, getOptimizations(flags))
     backEnd.backEnd(allDefs, structureResults.program, compilationEnvironment.profilingEnabled, flags)
   }
+
+  def compileProgram(source: String, additionalSources: Seq[SourceOwner], program: Program, extensionManager: ExtensionManager, compilationEnv: CompilationEnvironment): CompilerResults = ???
 
   private def getOptimizations(flags: nvm.CompilerFlags): Optimizations =
     if (flags.useOptimizer) {

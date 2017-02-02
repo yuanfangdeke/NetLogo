@@ -20,7 +20,7 @@ public final strictfp class _wait
       throws LogoException {
     long targetTime = System.nanoTime();
     targetTime += argEvalDoubleValue(context, 0) * 1000000000;
-    context.activation.binding.let(let, new MutableLong(targetTime));
+    context.activation.binding().let(let, new MutableLong(targetTime));
     context.ip = next;
   }
 

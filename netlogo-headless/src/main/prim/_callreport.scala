@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.nvm.{ Activation, Context, CustomGenerated, Procedure, Reporter }
+import org.nlogo.nvm.{ Activation, Context, CustomGenerated, ProcedureInterface, Reporter }
 import org.nlogo.nvm.RuntimePrimitiveException
 
 // Note that _callreport is "CustomGenerated".  That means that the bytecode generator generates
@@ -10,7 +10,7 @@ import org.nlogo.nvm.RuntimePrimitiveException
 // report() method below needs to be maintained in tandem with CustomGenerator.generateCallReport
 // (as well as _call.perform and CustomGenerator.generateCall). - ST 5/18/10
 
-class _callreport(val procedure: Procedure) extends Reporter with CustomGenerated {
+class _callreport(val procedure: ProcedureInterface) extends Reporter with CustomGenerated {
 
   override def returnType =
     procedure.syntax.ret

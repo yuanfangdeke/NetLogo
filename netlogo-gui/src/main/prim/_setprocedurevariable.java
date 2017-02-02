@@ -27,7 +27,7 @@ public final strictfp class _setprocedurevariable
   }
 
   public void perform_1(final org.nlogo.nvm.Context context, Object arg0) {
-    context.activation.args[vn] = arg0;
+    context.activation.args()[vn] = arg0;
     context.ip = next;
   }
 }

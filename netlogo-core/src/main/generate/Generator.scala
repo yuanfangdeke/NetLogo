@@ -3,7 +3,7 @@
 package org.nlogo.generate
 
 import org.nlogo.core.Syntax
-import org.nlogo.nvm.{ Command, CustomGenerated, GeneratorInterface, Instruction, Procedure, Reporter, Thunk }
+import org.nlogo.nvm.{ Command, CustomGenerated, GeneratorInterface, Instruction, ProcedureInterface, Reporter, Thunk }
 
 object Generator {
   val KEPT_INSTRUCTION_PREFIX = "keptinstr"
@@ -17,7 +17,7 @@ object Generator {
   // something to think about - ST 2/2/11
 }
 
-class Generator(procedure: Procedure, profilingEnabled: Boolean) extends GeneratorInterface {
+class Generator(procedure: ProcedureInterface, profilingEnabled: Boolean) extends GeneratorInterface {
   var ip = 0 // kinda ugly we need to track this only to use in one place, in generateCallReport - ST 2/10/09
   def generate() = {
     ip = 0

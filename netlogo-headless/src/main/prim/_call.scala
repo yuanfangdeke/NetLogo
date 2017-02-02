@@ -3,14 +3,14 @@
 package org.nlogo.prim
 
 import org.nlogo.core.Syntax
-import org.nlogo.nvm.{ Activation, Command, Context, CustomGenerated, Procedure }
+import org.nlogo.nvm.{ Activation, Command, Context, CustomGenerated, ProcedureInterface }
 
 // Note that _call is "CustomGenerated".  That means that the bytecode generator generates custom
 // bytecode for _call, instead of using the perform() method below.  The body of the perform()
 // method below needs to be maintained in tandem with CustomGenerator.generateCall (as well as
 // _callreport.report and CustomGenerator.generateCallReport). - ST 5/18/10
 
-class _call(val procedure: Procedure)
+class _call(val procedure: ProcedureInterface)
 extends Command with CustomGenerated {
 
   override def returnType =

@@ -7,7 +7,7 @@ import org.nlogo.core.Syntax;
 import org.nlogo.nvm.Activation;
 import org.nlogo.nvm.Context;
 import org.nlogo.nvm.RuntimePrimitiveException;
-import org.nlogo.nvm.Procedure;
+import org.nlogo.nvm.ProcedureInterface;
 import org.nlogo.nvm.Reporter;
 
 // Note that _callreport is "CustomGenerated".  That means that the
@@ -20,9 +20,9 @@ import org.nlogo.nvm.Reporter;
 public final strictfp class _callreport
     extends Reporter
     implements org.nlogo.nvm.CustomGenerated {
-  public final Procedure procedure;
+  public final ProcedureInterface procedure;
 
-  public _callreport(Procedure procedure) {
+  public _callreport(ProcedureInterface procedure) {
     this.procedure = procedure;
   }
 

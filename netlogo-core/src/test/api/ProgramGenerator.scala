@@ -56,13 +56,13 @@ trait ProgramGenerator extends GeneratorDrivenPropertyChecks {
       breedOwns   <- listOf(ident)
     } yield new Breed(typeOfBreed, breedName + "s", breedName, breedOwns)
 
-  def procedure: Gen[Procedure] =
+  def procedure: Gen[ProcedureInterface] =
     for {
       typeOfProc <- oneOf(procedureTypes)
       name       <- ident
       body       <- listOf(ident)
       args       <- listOf(ident)
-    } yield Procedure(typeOfProc, name, args, body.mkString(" "))
+    } yield ProcedureInterface(typeOfProc, name, args, body.mkString(" "))
 
   def comment: Gen[TopLevelComment] =
     for {
@@ -89,10 +89,10 @@ trait ProgramGenerator extends GeneratorDrivenPropertyChecks {
           case t: TopLevelComment => Stream.empty
           case AgentOwns(agentType, vars) =>
             shrinkSeq.shrink(vars).map(newVars => AgentOwns(agentType, newVars))
-          case Procedure(tpe, name, args, body) =>
+          case ProcedureInterface(tpe, name, args, body) =>
             shrinkSeq.shrink(args).flatMap(newArgs =>
                 shrinkSeq.shrink(body.split(" ").toSeq).map(newBody =>
-                Procedure(tpe, name, newArgs, newBody.mkString(" "))))
+                ProcedureInterface(tpe, name, newArgs, newBody.mkString(" "))))
           case Breed(tpe, plural, singular, owns) =>
             shrinkSeq.shrink(owns).map(newOwns => Breed(tpe, plural, singular, newOwns))
         })
@@ -122,7 +122,7 @@ trait ProgramGenerator extends GeneratorDrivenPropertyChecks {
         case Breed(tpe, plural, singular, owns) if owns.nonEmpty => s"[ $plural $singular ] $plural-own " + owns.mkString("[ ", " ", " ]")
         case Breed(tpe, plural, singular, _) => s"[ $plural $singular ]"
         case BracketedElement(keyword, elems) => elems.mkString("[ ", " ", " ]")
-        case p@Procedure(procType, _, _, _) => p.programText.replaceAllLiterally(procType, "")
+        case p@ProcedureInterface(procType, _, _, _) => p.programText.replaceAllLiterally(procType, "")
       }
     }
   }
@@ -137,7 +137,7 @@ trait ProgramGenerator extends GeneratorDrivenPropertyChecks {
 
     case class DeleteLastSyntax(originalElement: ProgramElement) extends MangledProgramElement {
       def mangledText = originalElement match {
-        case p: Procedure => originalText.replaceAllLiterally("end", "")
+        case p: ProcedureInterface => originalText.replaceAllLiterally("end", "")
         case Breed(tpe, plural, singular, owns) if owns.nonEmpty => s"$tpe [ $plural $singular ] $plural-own " + owns.mkString("[ ", " ", "")
         case Breed(tpe, plural, singular, _) => s"$tpe [ $plural $singular"
         case o            => originalText.replaceAllLiterally("]", "")
@@ -153,8 +153,8 @@ trait ProgramGenerator extends GeneratorDrivenPropertyChecks {
 
   case class MangledProgram(elems: Seq[Either[MangledProgramElement, ProgramElement]]) {
     def sortedElements = elems.sortBy {
-      case Left(mangled) if mangled.originalElement.isInstanceOf[Procedure] => 2
-      case Right(_: Procedure) => 2
+      case Left(mangled) if mangled.originalElement.isInstanceOf[ProcedureInterface] => 2
+      case Right(_: ProcedureInterface) => 2
       case _ => 1
     }
 
@@ -229,7 +229,7 @@ trait ProgramGenerator extends GeneratorDrivenPropertyChecks {
     val programText = if (owns.isEmpty) breedDecl else breedDecl + "\n" + ownsDecl
   }
 
-  case class Procedure(tpe: String, name: String, args: Seq[String], body: String) extends ProgramElement {
+  case class ProcedureInterface(tpe: String, name: String, args: Seq[String], body: String) extends ProgramElement {
     val argString = if (args.isEmpty) "" else args.mkString("[ ", " ", " ]")
     val programText = s"${tpe} ${name} ${argString} ${body} end"
   }
@@ -241,7 +241,7 @@ trait ProgramGenerator extends GeneratorDrivenPropertyChecks {
       val headerDecls = elems.collect {
         case e@(_: AgentOwns | _: Globals | _:Breed | _:Includes | _:Extensions | _: TopLevelComment) => e
       }
-      val procDecls = elems.collect { case p: Procedure => p }
+      val procDecls = elems.collect { case p: ProcedureInterface => p }
       headerDecls ++ procDecls
     }
 

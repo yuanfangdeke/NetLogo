@@ -34,15 +34,15 @@ public final strictfp class _carefully
 
   public void perform_1(final Context context) {
     AgentSet agentset = AgentSet.fromAgent(context.agent);
-    Binding oldBinding = context.activation.binding.copy();
+    Binding oldBinding = context.activation.binding().copy();
     try {
       // start new job that skips over the _goto command
       context.runExclusiveJob(agentset, next + 1);
       // move on to the _goto command, which will skip to the end.
       context.ip = next;
     } catch (LogoException ex) {
-      context.activation.binding = oldBinding;
-      context.activation.binding.let(let, ex);
+      context.activation.binding_$eq(oldBinding);
+      context.activation.binding().let(let, ex);
       context.ip = offset; // jump to error handler
     }
   }

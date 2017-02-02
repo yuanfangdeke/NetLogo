@@ -5,7 +5,7 @@ package org.nlogo.window
 import org.nlogo.agent.{ Agent, AgentSet }
 import org.nlogo.api.{ JobOwner, MersenneTwisterFast }
 import org.nlogo.core.AgentKind
-import org.nlogo.nvm.Procedure
+import org.nlogo.nvm.ProcedureInterface
 import org.nlogo.window.Events.{ CompiledEvent, CompileMoreSourceEvent, RemoveJobEvent }
 import java.awt.EventQueue
 
@@ -18,11 +18,11 @@ abstract class JobWidget(val random: MersenneTwisterFast)
 
   var agentKind: AgentKind = null
 
-  var _procedure: Procedure = null
+  var _procedure: ProcedureInterface = null
 
-  def procedure: Procedure = _procedure
+  def procedure: ProcedureInterface = _procedure
 
-  def procedure_=(procedure: Procedure) =
+  def procedure_=(procedure: ProcedureInterface) =
     _procedure = procedure
 
   var agents: AgentSet = null

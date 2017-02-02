@@ -29,7 +29,7 @@ public final strictfp class _bk
   }
 
   public void perform_1(Context context, double d) {
-    context.activation.binding.let(let, new MutableDouble(-d));
+    context.activation.binding().let(let, new MutableDouble(-d));
     context.ip = next;
   }
 

@@ -7,7 +7,7 @@ import org.nlogo.core.{ AgentKind, SourceWrapping }
 import org.nlogo.api.{JobOwner, LogoException, ReporterLogoThunk, CommandLogoThunk}
 import org.nlogo.agent.{Agent, AgentSet, Turtle, Patch, Link}
 import org.nlogo.nvm.{ ExclusiveJob, Activation, CompilerFlags,
-                       Context, ImportHandler, Procedure, Reporter }
+                       Context, ImportHandler, ProcedureInterface, Reporter }
 
 import scala.util.Try
 
@@ -32,7 +32,7 @@ class Evaluator(workspace: AbstractWorkspace) {
   }
 
   def compileCommands(source: String, kind: AgentKind = AgentKind.Observer,
-      flags: CompilerFlags = workspace.flags): Procedure =
+      flags: CompilerFlags = workspace.flags): ProcedureInterface =
     invokeCompiler(source, None, true, kind, flags)
 
   def compileReporter(source: String, flags: CompilerFlags = workspace.flags) =
@@ -41,14 +41,14 @@ class Evaluator(workspace: AbstractWorkspace) {
   /**
    * @return whether the code did a "stop" at the top level
    */
-  def runCompiledCommands(owner: JobOwner, procedure: Procedure) = {
+  def runCompiledCommands(owner: JobOwner, procedure: ProcedureInterface) = {
     val job = workspace.jobManager.makeConcurrentJob(
       owner, workspace.world.kindToAgentSet(owner.kind), workspace, procedure)
     workspace.jobManager.addJob(job, true)
     job.stopping
   }
 
-  def runCompiledReporter(owner: JobOwner, procedure: Procedure) =
+  def runCompiledReporter(owner: JobOwner, procedure: ProcedureInterface) =
     workspace.jobManager.addReporterJobAndWait(owner,
       workspace.world.kindToAgentSet(owner.kind), workspace, procedure)
 
@@ -71,7 +71,7 @@ class Evaluator(workspace: AbstractWorkspace) {
     def hasContext = context != null
     def report(reporter: Reporter, a: Agent = workspace.world.observer) =
       context.evaluateReporter(a, reporter)
-    def run(p: Procedure): Try[Boolean] = {
+    def run(p: ProcedureInterface): Try[Boolean] = {
       val oldActivation = context.activation
       val newActivation = new Activation(p, context.activation, 1)
       val oldRandom = context.job.random
@@ -131,7 +131,7 @@ class Evaluator(workspace: AbstractWorkspace) {
       }
     }
 
-  private class MyLogoThunk(source: String, agent: Agent, owner: JobOwner, command: Boolean, val procedure: Procedure) {
+  private class MyLogoThunk(source: String, agent: Agent, owner: JobOwner, command: Boolean, val procedure: ProcedureInterface) {
     val agentset = AgentSet.fromAgent(agent)
     procedure.topLevel = false
   }
@@ -139,7 +139,7 @@ class Evaluator(workspace: AbstractWorkspace) {
   ///
 
   def invokeCompilerForRun(source: String, kind: AgentKind,
-    callingProcedure: Procedure, reporter: Boolean): Procedure = {
+    callingProcedure: ProcedureInterface, reporter: Boolean): ProcedureInterface = {
 
     val vars =
       if (callingProcedure == null) Vector()

@@ -11,7 +11,7 @@ import javax.swing.ImageIcon
 import org.nlogo.api.MersenneTwisterFast
 import org.nlogo.awt.Mouse.hasButton1
 import org.nlogo.agent.{Agent, Observer, Turtle, Patch, Link}
-import org.nlogo.nvm.Procedure
+import org.nlogo.nvm.ProcedureInterface
 import org.nlogo.api.{ Editable, Options, Version}
 import scala.language.existentials
 
@@ -241,7 +241,7 @@ class ButtonWidget(random:MersenneTwisterFast) extends JobWidget(random)
     chooseDisplayName()
   }
 
-  override def procedure_=(p: Procedure): Unit = {
+  override def procedure_=(p: ProcedureInterface): Unit = {
     super.procedure_=(p)
   }
 

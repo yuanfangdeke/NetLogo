@@ -4,7 +4,7 @@ package org.nlogo.compile
 
 import org.nlogo.core.{Instantiator, BreedIdentifierHandler, Program}
 import org.nlogo.{ api => nlogoApi, core, nvm, prim },
-  nvm.Procedure.ProceduresMap
+  nvm.ProcedureInterface.ProceduresMap
 import org.nlogo.compile.api.{ Backifier => BackifierInterface }
 
 // This is seriously gross and horrible. - ST 4/11/14

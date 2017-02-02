@@ -15,7 +15,7 @@ import org.nlogo.compile.api.{ AstTransformer, CommandBlock, ProcedureDefinition
 
 class LambdaLifter(lambdaNumbers: Iterator[Int]) extends AstTransformer {
   val children = collection.mutable.Buffer[ProcedureDefinition]()
-  private var procedures = List.empty[nvm.Procedure]
+  private var procedures = List.empty[nvm.ProcedureInterface]
   private var lambdaStack = List.empty[Either[_commandlambda,_reporterlambda]]
 
   override def visitProcedureDefinition(procdef: ProcedureDefinition): ProcedureDefinition = {
@@ -34,13 +34,13 @@ class LambdaLifter(lambdaNumbers: Iterator[Int]) extends AstTransformer {
         res
       case c: prim._commandlambda =>
         val p = procedures.head
-        val formals = c.argumentNames.map(n => Let(n)).toArray
+        val formals = c.argumentNames.map(n => Let(n))
         val name = "__lambda-" + lambdaNumbers.next()
         c.proc = new nvm.LiftedLambda(
-          false, c.token, name, None, parent = p, lambdaFormals = formals, closedLets = resolveClosedVariables(c.closedVariables))
+          name, c.token, parent = p, lambdaFormals = formals, closedLets = resolveClosedVariables(c.closedVariables))
         c.proc.pos = expr.start
         c.proc.end = expr.end
-        p.children += c.proc
+        p.addChild(c.proc)
 
         children +=
           new ProcedureDefinition(c.proc, expr.args(0).asInstanceOf[CommandBlock].statements)

@@ -14,7 +14,7 @@ import org.nlogo.api.{ AgentVariables, Dump }
 import org.nlogo.awt.Fonts
 import org.nlogo.core.{ AgentKind, I18N, Nobody, TokenType, Widget => CoreWidget }
 import org.nlogo.editor.EditorField
-import org.nlogo.nvm.Procedure
+import org.nlogo.nvm.ProcedureInterface
 import org.nlogo.swing.OptionDialog
 import org.nlogo.window.{ EditorColorizer, Events => WindowEvents, InterfaceColors, JobWidget, Widget }
 
@@ -173,7 +173,7 @@ with WindowEvents.JobRemovedEvent.Handler
   override def isCommandCenter = true
 
   // this is how we're notified when we've been recompiled
-  override def procedure_=(procedure: Procedure) {
+  override def procedure_=(procedure: ProcedureInterface) {
     super.procedure_=(procedure)
     if (procedure != null)
       new WindowEvents.AddJobEvent(this, agents, procedure).raise(this)

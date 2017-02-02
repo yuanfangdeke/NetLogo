@@ -9,7 +9,7 @@ import org.nlogo.compile.api.{ DefaultAstVisitor, CommandBlock, ReporterApp, Rep
 import scala.util.Try
 
 /**
- * Fills in the source of all of Instructions in the Procedure.
+ * Fills in the source of all of Instructions in the ProcedureInterface.
  */
 private class SourceTagger(existingSources: Map[String, String], compilationEnvironment: CompilationEnvironment) extends DefaultAstVisitor {
   var sources: Map[String, String] = Map(existingSources.toSeq: _*)

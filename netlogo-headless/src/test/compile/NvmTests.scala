@@ -72,14 +72,14 @@ class NvmTests extends FunSuite {
 
     def commandProcedure(name: String, i: Int = 0): Procedure = {
       val args = (0 until i).map(j => "PROCEDUREVAR" + j)
-      val p = new Procedure(false, name.toUpperCase, token(name.toUpperCase), args.map(token _), None)
+      val p = new Procedure(false, name.toUpperCase, token(name.toUpperCase), args.map(token _), null)
       p.args = args.toVector
       p.topLevel = true
       p
     }
 
     def reporterProcedure(name: String): Procedure = {
-      val p = new Procedure(true, name.toUpperCase,  token(name.toUpperCase), Seq(), None)
+      val p = new Procedure(true, name.toUpperCase,  token(name.toUpperCase), Seq(), null)
       p.topLevel = true
       p
     }

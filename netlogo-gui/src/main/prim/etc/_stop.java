@@ -25,7 +25,7 @@ public final strictfp class _stop
       // if so, then "stop" means that this agent prematurely
       // finishes its participation in the ask.
       context.finished = true;
-    } else if (context.activation.nonLambdaActivation().procedure.isReporter()) {
+    } else if (context.activation.nonLambdaActivation().procedure().isReporter()) {
       // if we're not in an ask, then "stop" means to exit this procedure
       // immediately.  first we must check that it is (or is being called by)
       // a command procedure and not a reporter procedure.
@@ -40,7 +40,7 @@ public final strictfp class _stop
     if (!context.atTopActivation()) {
       context.finished = true;
     } else {
-      if (context.activation.nonLambdaActivation().procedure.isReporter())
+      if (context.activation.nonLambdaActivation().procedure().isReporter())
         throw new RuntimePrimitiveException(context, this,
             I18N.errorsJ().getN("org.nlogo.prim.etc._stop.notAllowedInsideToReport", displayName()));
     }
